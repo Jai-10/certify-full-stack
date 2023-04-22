@@ -9,7 +9,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 const cors = require('cors')
 app.use(cors({
-    origin: "https://certify-0101.netlify.app/",
     credentials: true
 }));
 
