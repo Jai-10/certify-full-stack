@@ -9,8 +9,15 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 const cors = require('cors')
 app.use(cors({
-    origin: "https://certify-0101.netlify.app",
-    credentials: true
+    origin: [
+        "http://localhost:5500/",
+        "https://certify-0101.netlify.app"
+    ],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: [
+        'Access-Control-Allow-Origin', 'Content-Type', 'Authorization'
+    ]
 }));
 
 

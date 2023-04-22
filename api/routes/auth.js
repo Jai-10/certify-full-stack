@@ -35,8 +35,6 @@ router.post('/login', async (req, res) => {
         // })
         res.cookie('jwt_token', token, {
             sameSite: "none",
-            secure: true,
-            domain: "https://certify-0101.netlify.app/",
             httpOnly: true
         })
 
