@@ -34,7 +34,10 @@ router.post('/login', async (req, res) => {
         //     httpOnly: true      // so we cannot access the token from the frontend
         // })
         res.cookie('jwt_token', token, {
-            httpOnly: false
+            sameSite: "none",
+            secure: true,
+            domain: "https://certify-0101.netlify.app/",
+            httpOnly: true
         })
 
         res.status(201).json({ message: "Login successful!", userDetails: user })
@@ -86,8 +89,14 @@ router.post('/signup', async (req, res) => {
         .then(result => {
             // jwt.sign(payload, secret)
             const token = jwt.sign({ _id: newUser._id }, process.env.SECRET_TOKEN)
+            // res.cookie('jwt_token', token, {
+            //     httpOnly: true      // so we cannot access the token from the frontend
+            // })
             res.cookie('jwt_token', token, {
-                httpOnly: true      // so we cannot access the token from the frontend
+                sameSite: "none",
+                secure: true,
+                domain: "https://certify-0101.netlify.app/",
+                httpOnly: true
             })
 
             res.status(201).json({ message: "Sign up successful!", newUserDetails: result })
