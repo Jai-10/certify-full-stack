@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 const cors = require('cors')
 app.use(cors({
-    origin: true,
+    origin: "*",
     credentials: true
 }));
 
