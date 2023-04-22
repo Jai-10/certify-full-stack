@@ -27,7 +27,7 @@ app.use(cookieParser());
 
 mongoose.set('strictQuery', false)
 mongoose.connect(process.env.MONGODB_CONNECTION_STR)
-    .then(console.log('Connection to the DB successful!'))
+    .then(res => console.log('Connection to the DB successful!'))
     .catch(err => console.log(err))
 
 
