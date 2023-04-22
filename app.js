@@ -9,6 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 const cors = require('cors')
 app.use(cors({
+    origin: "https://certify-0101.netlify.app",
     credentials: true
 }));
 
@@ -45,14 +46,6 @@ app.use('/postDocument', postRoute)
 app.use('/getUserDocuments', getUserDocsRoute)
 app.use('/editDocument', editDocRoute)
 app.use('/deleteDocument', deleteDocRoute)
-
-
-
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://certify-0101.netlify.app/");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,  Accept, x-client-key, x-client-token, x-client-secret, Authorization");
-    next();
-});
 
 
 // default route
