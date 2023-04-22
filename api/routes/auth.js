@@ -30,8 +30,11 @@ router.post('/login', async (req, res) => {
     const isPassSame = await bcrypt.compare(req.body.password, user.password);
     if (isPassSame) {
         const token = jwt.sign({ _id: user._id }, process.env.SECRET_TOKEN)
+        // res.cookie('jwt_token', token, {
+        //     httpOnly: true      // so we cannot access the token from the frontend
+        // })
         res.cookie('jwt_token', token, {
-            httpOnly: true      // so we cannot access the token from the frontend
+            httpOnly: false
         })
 
         res.status(201).json({ message: "Login successful!", userDetails: user })
