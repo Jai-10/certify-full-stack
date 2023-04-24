@@ -54,6 +54,15 @@ app.use('/editDocument', editDocRoute)
 app.use('/deleteDocument', deleteDocRoute)
 
 
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'https://certify-0101.netlify.app/');
+    res.header(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept'
+    );
+    next();
+});
+
 // default route
 app.use('/', (req, res) => {
     res.status(404).json({ message: "The page you're looking for doesn't exist." })
