@@ -11,7 +11,7 @@ const cors = require('cors')
 app.use(cors({
     origin: [
         "http://localhost:5500/",
-        "https://certify-0101.netlify.app/",
+        "https://certify-0101.netlify.app"
     ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
