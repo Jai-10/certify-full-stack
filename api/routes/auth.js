@@ -34,8 +34,9 @@ router.post('/login', async (req, res) => {
         //     httpOnly: true      // so we cannot access the token from the frontend
         // })
         res.cookie('jwt_token', token, {
+            httpOnly: true,
             sameSite: 'none',
-            httpOnly: true
+            secure: true
         })
 
         res.status(201).json({ message: "Login successful!", userDetails: user })
