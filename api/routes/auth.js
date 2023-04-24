@@ -33,9 +33,7 @@ router.post('/login', async (req, res) => {
         // res.cookie('jwt_token', token, {
         //     httpOnly: true      // so we cannot access the token from the frontend
         // })
-        res.cookie('jwt_token', token, {
-            httpOnly: true,
-        })
+        res.cookie('jwt_token', token)
 
         res.status(201).json({ message: "Login successful!", userDetails: user })
         return;
@@ -89,9 +87,7 @@ router.post('/signup', async (req, res) => {
             // res.cookie('jwt_token', token, {
             //     httpOnly: true      // so we cannot access the token from the frontend
             // })
-            res.cookie('jwt_token', token, {
-                httpOnly: true,
-            })
+            res.cookie('jwt_token', token)
 
             res.status(201).json({ message: "Sign up successful!", newUserDetails: result })
         })
