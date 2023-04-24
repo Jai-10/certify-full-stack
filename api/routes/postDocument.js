@@ -63,7 +63,7 @@ router.post('/', verifyToken, async (req, res) => {
                             const userId = decodedToken._id;
                             User.findByIdAndUpdate(userId,  {$push: {documents: postId}})
                                 .then(updateResult => {
-                                    res.status(201).json({ message: "Document posted successfully!", res: saveResult, doc: docDetails })
+                                    res.status(201).json({ message: "Document posted successfully!", res: saveResult })
                                 })
                                 .catch(err => res.status(500).json({ message: "User documents update error.", err: err }))
                             })
