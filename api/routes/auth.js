@@ -30,10 +30,9 @@ router.post('/login', async (req, res) => {
     const isPassSame = await bcrypt.compare(req.body.password, user.password);
     if (isPassSame) {
         const token = jwt.sign({ _id: user._id }, process.env.SECRET_TOKEN)
-        // res.cookie('jwt_token', token, {
-        //     httpOnly: true      // so we cannot access the token from the frontend
-        // })
-        res.cookie('jwt_token', token)
+        res.cookie('jwt_token', token, {
+            httpOnly: true      // so we cannot access the token from the frontend
+        })
 
         res.status(201).json({ message: "Login successful!", userDetails: user })
         return;
@@ -84,10 +83,9 @@ router.post('/signup', async (req, res) => {
         .then(result => {
             // jwt.sign(payload, secret)
             const token = jwt.sign({ _id: newUser._id }, process.env.SECRET_TOKEN)
-            // res.cookie('jwt_token', token, {
-            //     httpOnly: true      // so we cannot access the token from the frontend
-            // })
-            res.cookie('jwt_token', token)
+            res.cookie('jwt_token', token, {
+                httpOnly: true      // so we cannot access the token from the frontend
+            })
 
             res.status(201).json({ message: "Sign up successful!", newUserDetails: result })
         })
@@ -100,9 +98,7 @@ router.post('/signup', async (req, res) => {
 
 // log out
 router.get('/logout', (req, res) => {
-    console.log("token: " + req.cookies.jwt_token);
     res.clearCookie('jwt_token');
-    console.log("token: " + req.cookies.jwt_token);
     res.status(200).json({ message: "User has been logged out successfully." });
 })
 
