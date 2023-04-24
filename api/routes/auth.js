@@ -35,8 +35,6 @@ router.post('/login', async (req, res) => {
         // })
         res.cookie('jwt_token', token, {
             httpOnly: true,
-            sameSite: 'none',
-            secure: true
         })
 
         res.status(201).json({ message: "Login successful!", userDetails: user })
@@ -93,8 +91,6 @@ router.post('/signup', async (req, res) => {
             // })
             res.cookie('jwt_token', token, {
                 httpOnly: true,
-                sameSite: 'none',
-                secure: true
             })
 
             res.status(201).json({ message: "Sign up successful!", newUserDetails: result })
