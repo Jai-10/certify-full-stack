@@ -92,10 +92,9 @@ router.post('/signup', async (req, res) => {
             //     httpOnly: true      // so we cannot access the token from the frontend
             // })
             res.cookie('jwt_token', token, {
-                sameSite: "none",
-                secure: true,
-                domain: "https://certify-0101.netlify.app/",
-                httpOnly: true
+                httpOnly: true,
+                sameSite: 'none',
+                secure: true
             })
 
             res.status(201).json({ message: "Sign up successful!", newUserDetails: result })
