@@ -107,7 +107,8 @@ router.post('/signup', async (req, res) => {
 
 
 // log out
-router.get('/logout', (req, res, next) => {
+router.get('/logout', (req, res) => {
+    console.log(req.cookies.jwt_token);
     res.clearCookie('jwt_token');
     res.status(200).json({ message: "User has been logged out successfully." });
 })
