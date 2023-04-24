@@ -11,12 +11,12 @@ const cors = require('cors')
 app.use(cors({
     origin: [
         "*"
+    ],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: [
+        'Access-Control-Allow-Origin', 'Content-Type', 'Authorization'
     ]
-    // credentials: true,
-    // methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    // allowedHeaders: [
-    //     'Access-Control-Allow-Origin', 'Content-Type', 'Authorization'
-    // ]
 }));
 
 
