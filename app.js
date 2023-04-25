@@ -51,6 +51,13 @@ app.use('/editDocument', editDocRoute)
 app.use('/deleteDocument', deleteDocRoute)
 
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
+    next();
+})
+
 // default route
 app.use('/', (req, res) => {
     res.status(404).json({ message: "The page you're looking for doesn't exist." })
