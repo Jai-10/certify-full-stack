@@ -3,7 +3,7 @@ const User = require('../models/CertifyUser')
 const router = require('express').Router();
 
 
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
     const token = req.cookies.jwt_token
 
     if (token) {

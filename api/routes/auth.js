@@ -92,7 +92,7 @@ router.post('/signup', async (req, res) => {
             //     httpOnly: true      // so we cannot access the token from the frontend
             // })
             res.cookie('jwt_token', token, {
-                httpOnly: true,
+                httpOnly: true,      // so we cannot access the token from the frontend
                 sameSite: 'none',
                 secure: true
             })

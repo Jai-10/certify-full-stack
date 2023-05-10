@@ -9,31 +9,11 @@ const mongoose = require('mongoose')
 const verifyToken = require('./authenticateToken')
 
 
-// const { initializeApp } = require('firebase/app')
-// const firebaseStorage = require('firebase/storage')
-// const firebaseConfig = require('../../firebase')
-// initializeApp(firebaseConfig);
-
-// const multer = require('multer')
-// const upload = multer({ storage: multer.memoryStorage() });
-// const storage = firebaseStorage.getStorage();
-
-// const storageRef = firebaseStorage.ref(storage, `${req.file.originalname + "-" + Date.now()}`);
-// const metadata = { contentType: req.file.mimetype };
-// const snapshot = await firebaseStorage.uploadBytesResumable(storageRef, req.file.buffer, metadata);
-// const downloadURL = await firebaseStorage.getDownloadURL(snapshot.ref);
-// const docDetails = {
-//     message: 'file uploaded to firebase storage',
-//     name: req.file.originalname,
-//     type: req.file.mimetype,
-//     downloadURL: downloadURL
-// }
-
-
 
 const postDocSchema = joi.object({
     userId: joi.string().required(),
-    documentTitle: joi.string().min(3).required()
+    documentTitle: joi.string().min(3).required(),
+    documentUrl: joi.string().min(10).required()
 })
 
 
@@ -55,7 +35,8 @@ router.post('/', verifyToken, async (req, res) => {
                     const newDoc = new Document({
                         _id: new mongoose.Types.ObjectId(),
                         userId: decodedToken._id,
-                        documentTitle: req.body.documentTitle
+                        documentTitle: req.body.documentTitle,
+                        documentUrl: req.body.documentUrl
                     })
                     newDoc.save()
                         .then(saveResult => {

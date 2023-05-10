@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 const cors = require('cors')
 app.use(cors({
     origin: [
-        "http://localhost:5173/",
+        "http://localhost:5173",
         "https://certify-0101.netlify.app"
     ],
     credentials: true
@@ -52,9 +52,9 @@ app.use('/deleteDocument', deleteDocRoute)
 
 
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
     next();
 })
 
